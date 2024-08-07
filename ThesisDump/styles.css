@@ -1,0 +1,129 @@
+﻿/* CSS for the government-style header */
+.government-header {
+    background-color: #003366; /* Dark blue background */
+    color: #ffffff; /* White text color */
+    padding: 20px 0; /* Add some padding */
+}
+
+    .government-header .container {
+        max-width: 1200px; /* Limit width */
+        margin: 0 auto; /* Center content */
+    }
+
+    .government-header h1 {
+        margin: 0; /* Remove default margin */
+        text-align: center; /* Center align title */
+    }
+
+/* Welcome dropdown and user icon */
+.welcome-dropdown, .dropdown {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.user-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #003366;
+    min-width: 160px;
+    z-index: 1;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+    .dropdown-content a {
+        color: #ffffff;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+.dropdown:hover .dropdown-content, .show {
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #002147;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .government-header .container, .middle-container, .container-with-gridview, .container-with-iframe {
+        flex-direction: column;
+        width: auto;
+        padding: 0 10px;
+    }
+
+    .government-header h1 {
+        font-size: 20px; /* Smaller font size on mobile */
+    }
+
+    .user-icon, .dropdown-content a {
+        width: 20px; /* Smaller icons */
+        height: 20px;
+    }
+
+    .welcome-dropdown, .dropdown {
+        margin: 0 5px; /* Adjust for smaller screens */
+    }
+}
+
+/* Adjusting for content and iframe containers */
+.middle-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-with-gridview {
+    flex: 1;
+}
+
+.container-with-iframe {
+    width: 300px;
+    margin-left: 20px;
+}
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown content */
+.dropdown-content-sub {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Show the dropdown content when the dropdown is hovered over */
+.dropdown:hover .dropdown-content-sub {
+    display: block;
+}
+
+/* Style the dropdown links */
+.dropdown-content-sub a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content-sub a:hover {
+        background-color: #ddd;
+    }
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+
+    <script>
+        function recenter() {
+            alert("Centering map!");
+            mymap.setView(new L.LatLng(13.885548929705068, 121.93512477740816), 13);
+        }
+    </script>
+
+    <style>
+        #mapid { height: 600px; width: 100%; }
+    </style>
+</head>
+<body>
+    <button onclick="recenter()">Recenter</button>
+    <div id="mapid"></div>
+
+    <script>
+        var mymap = L.map('mapid').setView([13.885548929705068, 121.93512477740816], 13);
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGFtYXJ0aWxsYW5vIiwiYSI6ImNrOHd0OWJrODAwNXczbHFya3Q1cG81Z3AifQ.Vc0FW9YcAo3McS6JN3ngbg', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1IjoiZGFtYXJ0aWxsYW5vIiwiYSI6ImNrOHd0OWJrODAwNXczbHFya3Q1cG81Z3AifQ.Vc0FW9YcAo3McS6JN3ngbg'
+        }).addTo(mymap);
+
+        // Add markers for each barangay
+        var barangays = [
+            { name: 'Binagbag', coordinates: [13.858325347534906, 121.9389362814808] },
+            { name: 'Dayap', coordinates: [13.910083, 121.945750] }, // Updated coordinates
+            { name: 'Ibabang Kinagunan', coordinates: [13.878996, 121.904213] },
+            { name: 'Ilayang Kinagunan', coordinates: [13.897670, 121.898217] },
+            { name: 'Kanlurang Calutan', coordinates: [13.870210, 121.896771] },
+            { name: 'Kanlurang Maligaya', coordinates: [13.893898, 121.921035] },
+            { name: 'Salvacion', coordinates: [13.853247295116907, 121.93111576981367] },
+            { name: 'Silangang Calutan', coordinates: [13.861371, 121.908444] },
+            { name: 'Silangang Maligaya', coordinates: [13.901716811577627, 121.91591496657722] },
+            { name: 'Sildora', coordinates: [13.864520, 121.922125] },
+            { name: 'Poblacion I', coordinates: [13.869310, 121.913895] },
+            { name: 'Poblacion II', coordinates: [13.878284, 121.914883] } // Corrected coordinates
+        ];
+
+        barangays.forEach(function(barangay) {
+            L.marker(barangay.coordinates).addTo(mymap).bindPopup(barangay.name);
+        });
+    </script>
+</body>
+</html>

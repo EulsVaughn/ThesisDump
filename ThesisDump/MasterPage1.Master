@@ -1,0 +1,117 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage1.Master.cs" Inherits="ThesisDump.MasterPage1" %>
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Child Welfare Tracking Program</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <style type="text/css">
+        .auto-style2 {
+            vertical-align: middle;
+            cursor: pointer;
+            width: 94px;
+            height: 99px;
+        }
+        .auto-style3 {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 1440px;
+        }
+        .auto-style4 {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="government-header">
+            <div class="container">
+                <h1 class="auto-style4">Data Visualization Dashboard</h1>
+                <div class="auto-style3">
+                    <asp:Label ID="lblWelcomeMessage1" runat="server"></asp:Label>
+                    <!-- Dropdown Button -->
+                    <div class="dropdown">
+                        <img src="Images/user.png" alt="Menu" class="auto-style2" onclick="toggleDropdown()" />
+<!-- Dropdown Content -->
+
+
+<!-- Dropdown Content -->
+<div class="dropdown-content" id="myDropdown">
+    <asp:LinkButton ID="HomeButton" runat="server" OnClick="HomeButton_Click">Home</asp:LinkButton>
+    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="AccountSettingsLink_Click">Account Settings</asp:LinkButton>
+    <div class="dropdown">
+        <asp:LinkButton ID="AddCaseButton" runat="server" OnClientClick="toggleSubDropdown(); return false;">
+            Manage Case <i id="arrowIcon" class="fas fa-chevron-down"></i>
+        </asp:LinkButton>
+        <div class="dropdown-content-sub" id="subDropdown" style="display: none;">
+            <!-- Add your sub-dropdown options here -->
+            <asp:LinkButton ID="SubOption1" runat="server" OnClick="AddCase_Click ">Add Case</asp:LinkButton>
+           
+            <asp:LinkButton ID="SubOption3" runat="server" OnClick="ViewCase_Click" >View Case </asp:LinkButton>
+        </div>
+    </div>
+    <asp:LinkButton ID="StatDataButton" runat="server" OnClick="StatDataButton_Click">Statistical Data</asp:LinkButton>
+    <asp:LinkButton ID="LogoutButton" runat="server" OnClick="LogoutButton_Click">Logout</asp:LinkButton>
+           <!-- Admin part-->
+    <asp:LinkButton ID="AdminButton" runat="server"  OnClick="AdminSettingsLink_Click">Admin Settings</asp:LinkButton>
+</div>
+
+
+<script>
+    function toggleSubDropdown() {
+        var subDropdown = document.getElementById("subDropdown");
+        subDropdown.style.display = (subDropdown.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+
+
+
+ 
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ContentPlaceHolder for GridViewContent -->
+        <asp:ContentPlaceHolder ID="GridViewContent" runat="server">
+            <!-- Content from content pages will be injected here -->
+        </asp:ContentPlaceHolder>
+
+        <!-- ContentPlaceHolder for MainContent -->
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            <!-- Content from content pages will be injected here -->
+        </asp:ContentPlaceHolder>
+    </form>
+    <script>
+        function toggleDropdown() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        function logout() {
+            window.location.href = "Login.aspx";
+        }
+    </script>
+</body>
+</html>
+
